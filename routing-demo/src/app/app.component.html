@@ -1,0 +1,10 @@
+<nav class="" style="background-color: lightgrey; padding: 15px;">
+  <ul>
+    <li><a routerLink="/first-component" routerLinkActive="active">First component</a></li>
+    <li><a routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">Second component</a></li>
+    <li><a [routerLink]="['/pass-param-component', 1]" routerLinkActive="active" ariaCurrentWhenActive="page">Component with param</a></li>
+  </ul>
+  <app-pass-param [s]="'new'" (event)="testEvent($event)"></app-pass-param>
+  <p>Output:{{output}}</p>
+</nav>
+<router-outlet></router-outlet>

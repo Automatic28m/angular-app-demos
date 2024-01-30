@@ -1,0 +1,38 @@
+<div class="container p-5">
+    <div class="header text-2xl">
+        <b>Create poll</b>
+    </div>
+    <div class="divider"></div>
+    <form [formGroup]="pollForm">
+        <label class="form-control w-full">
+            <div class="label">
+                <span class="label-text">Title</span>
+            </div>
+            <input type="text" placeholder="Your poll title" class="input input-bordered" formControlName="title" />
+        </label>
+
+        <div class="flex items-end gap-3">
+            <label class="form-control w-full">
+                <div class="label">
+                    <span class="label-text">Choice</span>
+                </div>
+                <input type="text" placeholder="Add a choice" class="input input-bordered" [(ngModel)]="inputChoice"
+                    formControlName="choice" />
+            </label>
+            <div class="form-control w-fit">
+                <button type="button" (click)="addChoice()" class="btn btn-outline btn-accent" [disabled]="!pollForm.valid">Add Choice</button>
+            </div>
+        </div>
+
+        <div *ngFor="let choice of poll.choices, let i = index">
+            <ul>
+                <li>{{choice}} <button class="text-error" (click)="removeChoice(i)">Remove</button></li>
+            </ul>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-control mt-3 w-fit">
+            <button type="submit" class="btn btn-accent" (click)="onSubmit()" [disabled]="isDisabled">Create Poll</button>
+        </div>
+    </form>
+</div>

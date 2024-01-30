@@ -1,0 +1,62 @@
+<div class="container p-5">
+    <div class="header">
+        <b class="text-2xl">
+            Edit user
+        </b>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+        <form [formGroup]="reactiveForm">
+            <label for="" class="form-control w-full hidden">
+                <div class="label">
+                    <span class="label-text">Id</span>
+                </div>
+                <input type="text" placeholder="id" class="input input-bordered" formControlName="id">
+            </label>
+            <label for="" class="form-control w-full">
+                <div class="label">
+                    <span class="label-text">Username</span>
+                </div>
+                <input type="text" placeholder="Username" class="input input-bordered" formControlName="username"
+                    value={{user.username}}>
+            </label>
+            <label for="" class="form-control w-full">
+                <div class="label">
+                    <span class="label-text">Email</span>
+                </div>
+                <input type="email" placeholder="Email" class="input input-bordered" formControlName="email"
+                    value={{user.email}}>
+            </label>
+
+            <div *ngFor="let role of roles">
+                <div class="form-control w-fit">
+                    <label class="label cursor-pointer flex gap-3">
+                        <!-- <div *ngFor="let userRole of user.roles">
+                        </div> -->
+                        <input type="checkbox" class="checkbox" [checked]="isRoleSelected(role)" (change)="onCheckChange(role)"/>
+                        <span class="label-text">{{role}}</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-control mt-3 w-fit">
+                <button class="btn btn-outline btn-accent" [disabled]="!reactiveForm.valid"
+                    onclick="modal_1.showModal()">Save
+                    change</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Open the modal using ID.showModal() method -->
+<dialog id="modal_1" class="modal">
+    <div class="modal-box">
+        <h3 class="font-bold text-lg">Confirm</h3>
+        <p class="py-4">Are you sure to save change?</p>
+        <div class="modal-action">
+            <form method="dialog">
+                <button class="btn btn-accent me-2" (click)="onSubmit()">Save change</button>
+                <button class="btn">Cancel</button>
+            </form>
+        </div>
+    </div>
+</dialog>

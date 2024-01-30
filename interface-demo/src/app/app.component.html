@@ -1,0 +1,63 @@
+<div class="max-w-lg m-auto my-20">
+	<h2 class="text-accent text-2xl">Angular Reactive Form</h2>
+
+	<form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+		<label class="form-control w-full">
+			<div class="label">
+				<span class="label-text">What is your name?</span>
+			</div>
+			<input type="text" placeholder="Enter your name" class="input input-bordered w-full"
+				formControlName="name" />
+			<div class="label">
+				<span class="label-text-alt text-error" *ngIf="reactiveForm.get('name').hasError('minlength')"
+					class="text-error">
+					Name must be at least 3 characters long.
+				</span>
+				<span class="label-text-alt text-error" *ngIf="reactiveForm.get('name').hasError('maxlength')" class="text-error">
+					Name must not more than 10 characters long.
+				</span>
+			</div>
+		</label>
+
+		<label class="form-control w-full">
+			<div class="label">
+				<span class="label-text">What is your fav number?</span>
+			</div>
+			<input type="text" placeholder="Enter a number" class="input input-bordered w-full"
+				formControlName="favNumber" />
+			<!-- <div class="label">
+				<span class="label-text-alt text-error" *ngIf="reactiveForm.get('name').hasError('minlength')"
+					class="text-error">
+					Name must be at least 3 characters long.
+				</span>
+				<span class="label-text-alt text-error" *ngIf="reactiveForm.get('name').hasError('maxlength')" class="text-error">
+					Name must not more than 10 characters long.
+				</span>
+			</div> -->
+		</label>
+
+		<!-- Select Dropdown -->
+		<label class="form-control w-full">
+			<div class="label" for="country">Country:</div>
+			<select id="country" required formControlName="country" class="select select-bordered w-full">
+				<option value="" disabled selected>Select your country</option>
+				<option value="us">United States</option>
+				<option value="ca">Canada</option>
+				<option value="uk">United Kingdom</option>
+				<!-- Add more options as needed -->
+			</select>
+		</label>
+
+		<!-- Checkbox -->
+		<div class="form-control w-full">
+			<label class="label cursor-pointer">
+				<span class="label-text">Subscribe to newsletter</span>
+				<input class="checkbox" type="checkbox" id="subscribe" formControlName="subscribe">
+			</label>
+		</div>
+		<br>
+
+		<!-- Submit Button -->
+		<button type="submit" class="btn btn-outline btn-accent" [disabled]="!reactiveForm.valid">Submit</button>
+	</form>
+</div>

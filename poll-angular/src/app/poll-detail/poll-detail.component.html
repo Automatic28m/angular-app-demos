@@ -1,0 +1,26 @@
+<div *ngIf="loading">
+    <div class="w-full h-screen flex items-middle justify-center">
+        <span class="loading loading-spinner loading-md"></span>
+    </div>
+</div>
+<div class="container p-5">
+    <div *ngIf="!loading">
+        <div>
+            <b>Vote Poll</b>
+        </div>
+        <span><b>id</b> {{id}}</span>
+        <div>
+            <b class="text-2xl text-accent">{{poll.title}}</b>
+        </div>
+        <div>
+            <div><span><b>Created by</b> {{poll.user.username}}</span></div>
+            <div><span><b>Created at</b> {{dateTimeConvert(poll.dateTimeCreated)}}</span></div>
+        </div>
+        <div class="divider"></div>
+        <div class="container" style="display: flex; justify-content: center;">
+            <div class="chart-wrapper">
+                <canvas baseChart type="bar" width="800px" height="400px" [data]="barChartData"></canvas>
+            </div>
+        </div>
+    </div>
+</div>

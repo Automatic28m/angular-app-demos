@@ -1,0 +1,60 @@
+<div *ngIf="loading; else elseBlock">
+  <div class="container p-5">
+    <div class="skeleton h-8 w-32"></div>
+    <div class="divider"></div>
+    <div class="skeleton h-14 w-full mt-3"></div>
+    <div class="skeleton h-14 w-full mt-3"></div>
+    <div class="skeleton h-14 w-full mt-3"></div>
+  </div>
+  <!-- <div class="w-full h-screen flex items-middle justify-center">
+    <span class="loading loading-spinner loading-md"></span>
+  </div> -->
+</div>
+<ng-template #elseBlock>
+  <div class="container p-5">
+    <div class="mb-3">
+      <b class="text-2xl">Public poll</b>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div *ngFor="let poll of polls">
+        <div tabindex="0" class="collapse collapse-arrow bg-base-200 mb-3">
+          <input type="radio" name="my-accordion-2" checked="checked" />
+          <div class="collapse-title text-xl font-medium text-accent">
+            {{ poll.title }}
+          </div>
+          <div class="collapse-content">
+            <b>Choice</b>
+            <ul *ngFor="let choice of poll.choices" class="list-disc ps-5">
+              <li>{{ choice.title }}</li>
+            </ul>
+            <div class="mb-2">
+              <div>
+                <span><b>By</b> {{ poll.user.username }}</span>
+              </div>
+              <div>
+                <span><b>At</b>
+                  {{
+                  dateTimeConvert(poll.dateTimeCreated)
+                  | date : "dd/MM/yyyy HH:mm"
+                  }}</span>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div>
+                <button class="btn btn-outline btn-accent" [routerLink]="['/poll', poll.id]">
+                  Vote
+                </button>
+              </div>
+              <div>
+                <button class="btn btn-outline btn-accent" [routerLink]="['/pollDetail', poll.id]">
+                  Detail
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

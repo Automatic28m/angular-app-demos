@@ -1,0 +1,31 @@
+<div *ngIf="loading; else elseBlock">
+    <div class="w-full h-screen flex items-middle justify-center">
+      <span class="loading loading-spinner loading-md"></span>
+    </div>
+  </div>
+<ng-template #elseBlock>
+    <div class="container p-5">
+        <b>Sign in</b>
+        <div>
+            <form [formGroup]="reactiveForm">
+                <label class="form-control w-full">
+                    <div class="label">
+                        <span class="label-text">Username</span>
+                    </div>
+                    <input type="text" placeholder="Your username" class="input input-bordered"
+                        formControlName="username" />
+                </label>
+                <label class="form-control w-full">
+                    <div class="label">
+                        <span class="label-text">Password</span>
+                    </div>
+                    <input type="password" placeholder="Your password" class="input input-bordered"
+                        formControlName="password" />
+                </label>
+                <div class="form-control mt-3 w-fit">
+                    <button class="btn btn-accent" [disabled]="!reactiveForm.valid" (click)="onSubmit()">Sign in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>

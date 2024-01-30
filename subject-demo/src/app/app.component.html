@@ -1,0 +1,16 @@
+<div style="padding: 1rem;">
+    <h1>Angular | Subject & BehaviorSubject Demo</h1>
+    <h2>Cross component communication with Subject or BehaviorSubject</h2>
+</div>
+<hr>
+<app-comp1></app-comp1>
+<hr>
+<app-comp2></app-comp2>
+<hr>
+<div style="padding: 1rem;">
+    <button (click)="onClick()">{{btnMsg}}</button>
+</div>
+<div *ngIf="showComp3">
+    <app-comp3></app-comp3>
+    <hr>
+</div>

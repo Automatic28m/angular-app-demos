@@ -1,0 +1,52 @@
+<div class="container max-w-7xl my-20 m-auto">
+  <b class="text-2xl">Angular HTTP Client Demo</b>
+
+  <!-- <div>
+    <label class="form-control">
+      <div class="label">
+
+      </div>
+      <input type="text" placeholder="Enter api here" class="input input-bordered">
+      <div class="label">
+        <div class="label-text-alt">Try : https://jsonplaceholder.typicode.com/users</div>
+      </div>
+    </label>
+  </div> -->
+
+
+  <div class="text-error">
+    <span>{{errMessage | json}}</span>
+  </div>
+
+  <div *ngIf="!errMessage">
+    <div class="mb-3">
+      <b class="text-accent">Json</b>
+      <p class="border p-2 border-accent">{{results | json}}</p>
+    </div>
+
+    <div class="mb-3">
+      <b class="text-accent">Employee table</b>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of results" class="hover">
+            <td>{{result.id}}</td>
+            <td>{{result.name}}</td>
+            <td>{{result.username}}</td>
+            <td>{{result.email}}</td>
+            <td>{{result.phone}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

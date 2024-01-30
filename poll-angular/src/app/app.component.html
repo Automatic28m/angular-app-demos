@@ -1,0 +1,62 @@
+<div class="drawer lg:drawer-open">
+    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+
+
+    <div class="drawer-content flex flex-col">
+        <!-- Page content here -->
+        <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+        <router-outlet></router-outlet>
+    </div>
+
+
+    <div class="drawer-side">
+        <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+
+
+        <div *ngIf="loading; else elseBlock" class="h-full">
+            <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content gap-3">
+                <li>
+                    <div class="skeleton h-14 w-full"></div>
+                </li>
+                <li>
+                    <div class="skeleton h-8 w-24"></div>
+                </li>
+                <li>
+                    <div class="skeleton h-8 w-36"></div>
+                </li>
+                <li>
+                    <div class="skeleton h-8 w-24"></div>
+                </li>
+                <li>
+                    <div class="skeleton h-8 w-36"></div>
+                </li>
+            </ul>
+        </div>
+
+
+        <ng-template #elseBlock>
+            <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                <!-- Sidebar content here -->
+                <li><b class="text-2xl text-accent">Angular Poll App</b></li>
+
+                <div *ngIf="user.id != null ; then signIn else notSignIn"></div>
+
+                <ng-template #signIn>
+                    <li><a routerLink="/home">Home</a></li>
+                    <li><a routerLink="/createPoll">Create Poll</a></li>
+                    <li><a routerLink="/user"><b>{{user.username}}</b></a></li>
+                    <li><a routerLink="/signout">Sign out</a></li>
+                    <div class="divider"></div>
+                    <li><a routerLink="/dashboard">Dashboard</a></li>
+                    <li><a routerLink="/pollTable">Poll</a></li>
+                    <li><a routerLink="/userTable">User</a></li>
+                    <li><a routerLink="/adminTable">Admin</a></li>
+                    <li><a routerLink="/modTable">Moderator</a></li>
+                </ng-template>
+                <ng-template #notSignIn>
+                    <li><a routerLink="/signin">Sign in</a></li>
+                    <li><a routerLink="/signup">Sign up</a></li>
+                </ng-template>
+            </ul>
+        </ng-template>
+    </div>
