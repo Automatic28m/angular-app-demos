@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Angular Demo Projects Collection</title>
-</head>
-<body>
   <h1>Angular Demo Projects Collection</h1>
   <p>
     This repository contains a set of small Angular demo projects designed to demonstrate and practice core Angular concepts and libraries. Each project focuses on a specific feature or technique to help developers understand and apply Angular effectively.
@@ -74,5 +66,4 @@
     <li>These demos were created to facilitate hands-on learning and experimentation with Angular.</li>
     <li>Feel free to explore, modify, and extend each demo to deepen your understanding of Angular development.</li>
   </ul>
-</body>
-</html>
+
